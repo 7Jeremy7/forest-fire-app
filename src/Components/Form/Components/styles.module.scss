@@ -1,0 +1,46 @@
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    label{
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    input{
+        padding: .6rem 1rem;
+        border: 1px solid #878787;
+        font-size: 14px;
+        border-radius: 6px;
+        transition-duration: .3s;
+        outline: .5px solid transparent;
+        color: #000;
+
+        &:focus{
+            outline: 1.5px solid  white;
+        }
+    }
+
+
+
+}
+
+.submitButton{
+    margin-top: 1rem;
+    width: 100%;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: .4rem 0;
+    border: .1px solid #878786 ;
+    transition-duration: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover{
+        color: white;
+        border: 1.7px solid white;
+    }
+}
