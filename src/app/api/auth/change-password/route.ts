@@ -41,8 +41,15 @@ export async function POST(request: NextRequest){
         try {
             const isTokenValid = jwt.verify(token, "secreto");
 
-            //@ts-ignore
-            const {data} = isTokenValid
+            if(!isTokenValid || typeof isTokenValid !== "object"){
+            return NextResponse.json({
+                  message: messages.error.notAuthorized,
+                  status:400
+            });
+        
+            }   
+
+            const {data}= isTokenValid as {data: {userID: string}};
 
             const userFind = await User.findById(data.userID);
 
