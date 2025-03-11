@@ -42,6 +42,7 @@ export async function POST(request: NextRequest){
             )
         }
 
+        //cambio de variable
         const {password: _userPass, ...rest} = userFind._doc;
 
         const token = jwt.sign({data: rest}, "secreto",{
