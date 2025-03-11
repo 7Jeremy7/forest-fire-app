@@ -92,7 +92,7 @@ export default function HomePage() {
     {/* Gráfico de Humo */}
     <div className="mb-8">
   <LineChart
-    data={data.humo.map((item) => 2120 - item.valor)}
+    data={data.humo.map((item) => item.valor)}
     label="Sensor de Humo"
     color="rgb(255, 255, 255)" // Línea blanca
     labelColor="white" // Texto blanco

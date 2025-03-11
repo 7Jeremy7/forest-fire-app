@@ -21,6 +21,7 @@ export async function GET(){
         const isTokenValid = jwt.verify(token, "secreto");
         //@ts-ignore
         const {data} = isTokenValid;
+        
 
         await connectToDatabase();
         const userFind = await User.findById(data._id);
