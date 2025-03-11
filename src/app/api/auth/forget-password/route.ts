@@ -35,7 +35,7 @@ export async function POST(request: NextRequest){
 
         const forgetUrl = `http://localhost:3000/change-password?token=${token}`;
         
-        //@ts-ignore
+        
         await resend.emails.send({
             from: 'onboarding@resend.dev',
             to: email,
