@@ -19,7 +19,7 @@ export async function GET(){
 
     try {
         const isTokenValid = jwt.verify(token, "secreto");
-        //@ts-expect-error
+        //@ts-expect-error debido a la inferencia de datos 
         const {data} = isTokenValid;
         
 
