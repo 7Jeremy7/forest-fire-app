@@ -19,7 +19,7 @@ export async function GET(){
 
     try {
         const isTokenValid = jwt.verify(token, "secreto");
-        //@ts-ignore
+        //@ts-expect-error
         const {data} = isTokenValid;
         
 
