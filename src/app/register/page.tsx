@@ -14,7 +14,7 @@ export default function LoginPage() {
     startLoading()
     await authFetch({
       endpoint: 'register',
-      redirectRoute: '/home',
+      redirectRoute: '/.',
       formData
     })  
     finishLoading()
