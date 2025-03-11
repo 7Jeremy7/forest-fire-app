@@ -5,7 +5,7 @@ import {createContext, JSX, useState} from 'react'
 import { StatusNotification } from '@/interfaces'
 
 interface IState {
-    open: Boolean
+    open: boolean
     status: StatusNotification
     msj: string | null
 }
