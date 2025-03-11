@@ -53,7 +53,7 @@ export async function POST(request: NextRequest){
             password: hashedPassword,
         });
 
-        // @ts-ignore
+        // @ts-expect-error por el doc
         const {password: userPass, ...rest} = newUser._doc;
 
         await newUser.save();
