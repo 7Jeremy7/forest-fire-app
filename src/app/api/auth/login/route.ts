@@ -42,7 +42,7 @@ export async function POST(request: NextRequest){
             )
         }
 
-        const { passwordl , ...rest } = userFind._doc;
+        const { password: _ , ...rest } = userFind._doc;
 
 
         const token = jwt.sign({data: rest}, "secreto",{
