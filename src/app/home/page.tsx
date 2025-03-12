@@ -14,7 +14,7 @@ export default function HomePage() {
 
   const fetchData = async () => {
     try {
-      const res = await fetch('https://forest-fire-app-production.up.railway.app//api/history');
+      const res = await fetch('https://forest-fire-app-production.up.railway.app/api/history');
       if (!res.ok) {
         throw new Error('Failed to fetch data');
       }
