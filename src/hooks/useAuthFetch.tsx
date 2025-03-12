@@ -24,7 +24,7 @@ export function useAuthFetch (){
     }: AuthFetchProps) =>{
         try {
             const {data} = await axios.post(
-                `/api/auth/${endpoint}`,
+                `https://forest-fire-app-production.up.railway.app/api/auth/${endpoint}`,
                  formData,
                   options
                 )
