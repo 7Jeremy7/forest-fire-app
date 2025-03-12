@@ -30,8 +30,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-    <body className={inter.className}>
+    <html lang="es">
+    <body className={`${inter.className} ${geistSans.variable} ${geistMono.variable}`}>
       <NotificationProvider>
       <main className="min-h-screen flex flex-col items-center justify-center">
         {children}
