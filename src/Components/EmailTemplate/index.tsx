@@ -7,19 +7,37 @@ interface EmailTemplateProps{
 export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
     buttonUrl
 }) => (
-    <div
-    style={{
-        padding: '20px',
-        backgroundColor: 'white',
-        display: 'grid',
-        justifyItems: 'center'
-    }}
+<div
+  style={{
+    width: 'max-content', // Se ajusta al contenido
+    padding: '20px',
+    backgroundColor: 'black',
+    display: 'grid',
+    flexDirection: 'column', // Elementos en columna
+    alignItems: 'center', // Centra horizontalmente
+    textAlign: 'center',
+    borderRadius: '20px',
+    gap: '10px' // Espacio entre elementos
+  }}
+>
+  <span style={{ color: 'white', whiteSpace: 'nowrap', marginTop: '90px' }}>
+    Haz click para cambiar tu contraseña
+  </span>
+  <a href={buttonUrl} style={{ textDecoration: 'none', width: '100%' }}>
+    <button 
+      style={{ 
+        padding: '10px 20px', 
+        display: 'block', 
+        margin: '100px auto',
+        backgroundColor: 'black',
+        color: 'white',
+        borderColor: 'white'
+      }}
     >
-        <span style={{textAlign: 'center'}}>
-            Haz click para cambiar tu contraseña 
-        </span>
-        <a href={buttonUrl} style={{margin: '10px auto'}}>
-            <button>Cambiar Contraseña</button>
-        </a>
-    </div>
+      Cambiar Contraseña
+    </button>
+  </a>
+</div>
+
+
 )

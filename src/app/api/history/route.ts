@@ -11,7 +11,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   try {
     // Conexión a la base de datos
-    await connectToDatabase();
+    
     await client;
 
     // Obtener los datos de cada colección

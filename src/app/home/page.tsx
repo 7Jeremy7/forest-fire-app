@@ -27,7 +27,7 @@ export default function HomePage() {
 
   useEffect(() => {
     fetchData();
-    const intervalId = setInterval(fetchData, 30000); // Actualización de datos
+    const intervalId = setInterval(fetchData, 5000); // Actualización de datos
     return () => clearInterval(intervalId);
   }, []);
 
@@ -60,74 +60,74 @@ export default function HomePage() {
     alertaTexto = '⚠️ POSIBLE INCENDIO ⚠️';
   }
 
-  return (
-<div style={{width: '100%', height:'80%'}} className="flex justify-center items-center p-4">
-  <div style={{ width: "80%" }} className="grid grid-cols-2 gap-6">
-    <h1 className="text-center text-2xl font-bold col-span-2">Monitoreo</h1>
-    {/* Cuadro de alerta */}
+  return(
+    <div  style={{ width: "90%" }} >
+      <div className="grid grid-cols-1 sm:grid-cols-1 gap-6">
+        <h1  style={{ paddingTop: '20px' }} className="text-center text-2xl font-bold col-span-2">Monitoreo</h1>
+        {/* Cuadro de alerta */}
         <div className={`col-span-2 flex justify-center p-4 text-white font-bold text-xl rounded-lg shadow-md ${alertaColor}`}>
           {alertaTexto}
         </div>
-    {/* Cuadro con la dirección GPS */}
-    <div className="col-span-2 flex justify-center">
-      <div style={{width: "100%", height:"95%"}} className="black text-white p-5 rounded-lg shadow-md w-64 border border-white">
-        <h2 className="text-lg font-semibold text-center mb-2">Ubicación GPS</h2>
-        {lastGpsData ? (
-          <div className="text-sm flex flex-col gap-2">
-            <p className="text-left"><span className="font-bold">Latitud:</span> {lastGpsData.latitud ?? 'N/A'}</p>
-            <p className="text-left"><span className="font-bold">Longitud:</span> {lastGpsData.longitud ?? 'N/A'}</p>
-            <button 
-              className="mt-2 p-2 text-white font-bold rounded hover:text-gray-300"
-              onClick={() => window.open(`https://www.google.com/maps?q=${lastGpsData.latitud},${lastGpsData.longitud}`, '_blank')}
-            >
-              Ir a la ubicación
-            </button>
+        {/* Cuadro con la dirección GPS */}
+        <div className="col-span-2 flex justify-center">
+          <div style={{ width: "100%", height: "95%" }} className="black text-white p-5 rounded-lg shadow-md w-64 border border-white">
+            <h2 className="text-lg font-semibold text-center mb-2">Ubicación GPS</h2>
+            {lastGpsData ? (
+              <div className="text-sm flex flex-col gap-2">
+                <p className="text-left"><span className="font-bold">Latitud:</span> {lastGpsData.latitud ?? 'N/A'}</p>
+                <p className="text-left"><span className="font-bold">Longitud:</span> {lastGpsData.longitud ?? 'N/A'}</p>
+                <button 
+                  className="mt-2 p-2 text-white font-bold rounded hover:text-gray-300"
+                  onClick={() => window.open(`https://www.google.com/maps?q=${lastGpsData.latitud},${lastGpsData.longitud}`, '_blank')}
+                >
+                  Ir a la ubicación
+                </button>
+              </div>
+            ) : (
+              <p className="text-left">No hay datos de GPS disponibles</p>
+            )}
           </div>
-        ) : (
-          <p className="text-left">No hay datos de GPS disponibles</p>
-        )}
-      </div>
-    </div>
-
-    {/* Gráfico de Humo */}
-    <div className="mb-8">
+        </div>
+        {/* Gráficos en columna en pantallas pequeñas y más grandes en PC */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 ">
+          <div className="mb-8 w-full ">
+            <LineChart
+              data={data.humo.map((item) => item.valor)}
+              label={`Sensor de Humo (${data.humo.length > 0 ? data.humo[data.humo.length - 1].valor : 'N/A'})ppm`}
+              color="rgb(255, 255, 255)"
+              labelColor="white"
+            />
+          </div>
+          <div className="mb-2 w-full h-50">
+            <LineChart
+              data={data.flameSensor.map((item) => 500 - item.valor)}
+              label={`Sensor de Flama (${data.flameSensor.length > 0 ? data.flameSensor[data.flameSensor.length - 1].valor : 'N/A'})`}
+              color="rgba(255, 99, 132, 1)"
+              labelColor="rgb(255, 99, 132)"
+            />
+          </div>
+          <div className="mb-8 w-full h-50">
   <LineChart
-    data={data.humo.map((item) => item.valor)}
-    label="Sensor de Humo"
-    color="rgb(255, 255, 255)" // Línea blanca
-    labelColor="white" // Texto blanco
+    data={data.tempHumidity.map((item) => item.humedad)}
+    label={`Humedad (${data.tempHumidity.length > 0 ? data.tempHumidity[data.tempHumidity.length - 1].humedad : 'N/A'})%`}
+    color="rgba(75, 192, 192, 1)"
+    labelColor="rgb(75, 192, 192)"
   />
 </div>
 
-<div className="mb-8">
-  <LineChart
-    data={data.flameSensor.map((item) => 500 - item.valor)}
-    label="Sensor de Llama"
-    color="rgba(255, 99, 132, 1)" // Línea roja
-    labelColor="rgb(255, 99, 132)" // Texto rojo
-  />
-</div>
-
-<div className="mb-8">
-  <LineChart
-    data={data.tempHumidity.map((item) =>  item.humedad)}
-    label="Humedad"
-    color="rgba(75, 192, 192, 1)" // Línea azul
-    labelColor="rgb(75, 192, 192)" // Texto azul
-  />
-</div>
-
-<div className="mb-8">
+<div className="mb-8 w-full h-50">
   <LineChart
     data={data.tempHumidity.map((item) => item.temperatura)}
-    label="Temperatura"
-    color="rgba(255, 206, 86, 1)" // Línea amarilla
-    labelColor="rgb(255, 206, 86)" // Texto amarillo
+    label={`Temperatura (${data.tempHumidity.length > 0 ? data.tempHumidity[data.tempHumidity.length - 1].temperatura : 'N/A'})°C`}
+    color="rgba(255, 206, 86, 1)"
+    labelColor="rgb(255, 206, 86)"
   />
 </div>
-
-  </div>
-</div>
+        </div>
+      </div>
+    </div>
   );
+  
+  
 }
 
