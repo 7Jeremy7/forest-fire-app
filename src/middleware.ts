@@ -16,14 +16,15 @@ export async function middleware(request:NextRequest) {
 
         const data = await res.json()
 
-        //@ts-ignore
+
+        //aqui iba un ts ignore
         if(!data.isAuthorizated){
             return NextResponse.redirect(new URL('/', request.url))
         }
 
         return NextResponse.next()
 
-    } catch (error) {
+    } catch  {
         return NextResponse.redirect(new URL('/', request.url))
     }
 }
