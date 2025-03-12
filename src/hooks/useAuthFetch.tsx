@@ -41,9 +41,9 @@ export function useAuthFetch (){
 
                  if(redirectRoute) router.push(redirectRoute)
 
-        } catch (error: any) {
+        } catch (error) {
             showNotification({
-                msj: error.response.data.message as string,
+                msj: axios.isAxiosError(error) ? error.response?.data?.message || "Error desconocido" : "Ocurrió un error",
                 open: true,
                 status: 'error'
              })
