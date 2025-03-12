@@ -1,4 +1,3 @@
-import { connectToDatabase } from "@/libs/mongodb";
 import { client } from "@/libs/mqttClient";
 import FlameSensor from "@/models/FlameSensor";
 import GpsData from "@/models/GpsData";
