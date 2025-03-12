@@ -1,3 +1,4 @@
+import { connectToDatabase } from "@/libs/mongodb";
 import { client } from "@/libs/mqttClient";
 import FlameSensor from "@/models/FlameSensor";
 import GpsData from "@/models/GpsData";
@@ -10,7 +11,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   try {
     // Conexión a la base de datos
-    
+    connectToDatabase();
     await client;
 
     // Obtener los datos de cada colección
