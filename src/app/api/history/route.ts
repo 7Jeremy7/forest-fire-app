@@ -5,7 +5,7 @@ import GpsData from "@/models/GpsData";
 import Humedad from "@/models/Humedad";
 import HumoSensor from "@/models/HumoSensor";
 import { messages } from "@/utils/messages";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 
 export async function GET() {
