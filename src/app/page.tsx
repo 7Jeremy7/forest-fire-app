@@ -14,7 +14,7 @@ export default function LoginPage() {
     startLoading()
     await authFetch({
       endpoint: 'login',
-      redirectRoute: '/home',
+      redirectRoute: 'https://forest-fire-app-production.up.railway.app/home',
       formData
     })  
     finishLoading()
