@@ -10,7 +10,7 @@ export default function LoginPage() {
 
   const {finishLoading, isLoading,startLoading} = useLoading()
 
-  const forgetPassword = async (formData: any) =>{
+  const forgetPassword = async (formData: Record<string, unknown>) =>{
     startLoading()
     await authFetch({
       endpoint: 'forget-password',
