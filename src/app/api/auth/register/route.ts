@@ -54,7 +54,7 @@ export async function POST(request: NextRequest){
         });
 
         // @ts-expect-error por el doc
-        const {password: userPass, ...rest} = newUser._doc;
+        const {...rest} = newUser._doc;
 
         await newUser.save();
 
