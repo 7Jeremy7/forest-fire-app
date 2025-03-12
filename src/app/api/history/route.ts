@@ -8,6 +8,7 @@ import { messages } from "@/utils/messages";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   try {
     // Conexión a la base de datos
     await connectToDatabase();
