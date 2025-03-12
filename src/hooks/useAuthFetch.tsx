@@ -7,7 +7,7 @@ interface AuthFetchProps {
     endpoint: string
     redirectRoute?:  string
     formData: Record<string, unknown>
-    options?:  AxiosRequestConfig<any> 
+    options?:  AxiosRequestConfig<Record<string, unknown>>
 }
 
 export function useAuthFetch (){

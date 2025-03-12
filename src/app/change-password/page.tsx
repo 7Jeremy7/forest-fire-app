@@ -18,7 +18,7 @@ export default function LoginPage() {
 
     const token = searchParams.get('token')
     
-    const options: AxiosRequestConfig<string> = {
+    const options: AxiosRequestConfig<Record<string, unknown>> = {
       headers: {
         token
       }
