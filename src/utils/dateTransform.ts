@@ -1,5 +1,5 @@
 export function dateTransform(username: string): string{
-        const currentDate = new Date();
+        const currentDate = new Date(username);
         const formattedDate = `${currentDate.getDate()}/${
             currentDate.getMonth() + 1 
         }/${currentDate.getFullYear()}`;
