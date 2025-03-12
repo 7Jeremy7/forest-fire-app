@@ -6,6 +6,7 @@ import { Resend } from "resend";
 import jwt from "jsonwebtoken"
 import { EmailTemplate } from "@/Components/EmailTemplate";
 
+
 const resend =  new Resend("re_G3SuwGyX_393FxwdDfuAhtEriSaUxRw5F")
 
 export async function POST(request: NextRequest){
@@ -40,7 +41,7 @@ export async function POST(request: NextRequest){
             from: 'onboarding@resend.dev',
             to: email,
             subject: 'Cambio de contraseña',
-            react: EmailTemplate({ buttonUrl: forgetUrl}),  
+            react: await EmailTemplate({ buttonUrl: forgetUrl}),  
         });
 
         return  NextResponse.json(
