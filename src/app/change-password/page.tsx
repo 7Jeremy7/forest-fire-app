@@ -25,7 +25,7 @@ function ChangePasswordForm() {
     await authFetch({
       endpoint: "change-password",
       formData,
-      redirectRoute: "https://forest-fire-app-production.up.railway.app/",
+      redirectRoute: "/",
       options,
     });
 

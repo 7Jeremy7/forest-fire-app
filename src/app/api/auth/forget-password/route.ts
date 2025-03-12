@@ -34,7 +34,7 @@ export async function POST(request: NextRequest){
             expiresIn: 86400,
         });
 
-        const forgetUrl = `http://localhost:3000/change-password?token=${token}`;
+        const forgetUrl = `https://forest-fire-app-production.up.railway.app/change-password?token=${token}`;
         
         
         await resend.emails.send({
