@@ -13,12 +13,12 @@ export default function LoginPage() {
   const authFetch = useAuthFetch()
   const searchParams = useSearchParams()
 
-  const forgetPassword = async (formData: string | void) =>{
+  const forgetPassword = async (formData: string | any) =>{
     startLoading()
 
     const token = searchParams.get('token')
     
-    const options: AxiosRequestConfig<string | void> = {
+    const options: AxiosRequestConfig<string | any> = {
       headers: {
         token
       }
