@@ -6,7 +6,7 @@ import { useContext } from "react"
 interface AuthFetchProps {
     endpoint: string
     redirectRoute?:  string
-    formData: any
+    formData: Record<string, unknown>
     options?:  AxiosRequestConfig<any> 
 }
 

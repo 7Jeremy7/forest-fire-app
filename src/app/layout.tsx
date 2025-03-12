@@ -20,10 +20,6 @@ export const metadata: Metadata = {
   description: "Autenticación",
 };
 
-interface RootLayoutProps {
-  children: React.ReactNode
-}
-
 export default function RootLayout({
   children,
 }: Readonly<{

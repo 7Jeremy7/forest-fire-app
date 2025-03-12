@@ -10,7 +10,7 @@ export default function LoginPage() {
 
   const {finishLoading, isLoading,startLoading} = useLoading()
 
-  const login = async (formData: any) =>{
+  const login = async (formData: Record<string , unknown>) =>{
     startLoading()
     await authFetch({
       endpoint: 'login',
